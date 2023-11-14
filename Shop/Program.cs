@@ -23,7 +23,7 @@ namespace Shop
             builder.Services.AddMediatR(
                 cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
             // Add services to the container.
-            builder.Services.AddTransient<INotificationHandler<FoodCreatedNotification>, FoodCreatedNotificationHandler>();
+            builder.Services.AddTransient<INotificationHandler<FoodNotification>, FoodCreatedNotificationHandler>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

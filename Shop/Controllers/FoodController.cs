@@ -28,6 +28,7 @@ namespace Shop.Controllers
         [HttpGet(Name = "GetFoods")]
         public async Task<IActionResult> GetFoods()
         {
+            await _mediator.Publish(new FoodNotification { Message = "Get All Foods" });
             return StatusCode(200, await _mediator.Send(new GetFoods.Query()));
         }
 
@@ -48,7 +49,7 @@ namespace Shop.Controllers
                 return StatusCode(400, "Error Comes From here!");
             }
 
-            await _mediator.Publish(new FoodCreatedNotification { FoodId = f.food.FoodID });
+            await _mediator.Publish(new FoodNotification { FoodId = f.food.FoodID, Message = "Create a Food" });
             return StatusCode(201, $"Food With ID = {f.food.FoodID}, FoodName= {f.food.FoodName}");
         }
 
@@ -61,6 +62,7 @@ namespace Shop.Controllers
             {
                 return StatusCode(400, $"Can't Find Food With ID={id}");
             }
+            await _mediator.Publish(new FoodNotification { FoodId = id, Message = "Get a Food" });
             return StatusCode(200, food.food);
 
         }
@@ -79,6 +81,7 @@ namespace Shop.Controllers
             });
             if (result != null)
             {
+                await _mediator.Publish(new FoodNotification { FoodId = id, Message = "Update a Food" });
                 return StatusCode(200, "Updated Successfully");
             }
             else
@@ -96,11 +99,12 @@ namespace Shop.Controllers
             });
             if (result != null)
             {
+                await _mediator.Publish(new FoodNotification { FoodId = id, Message = "Delete a Food" });
                 return StatusCode(200, "Delete Successfully");
             }
             else
             {
-                return StatusCode(404, "Can't Updated !");
+                return StatusCode(404, "Can't Delete !");
             }
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Handlers
 {
-    public class FoodCreatedNotificationHandler : INotificationHandler<FoodCreatedNotification>
+    public class FoodCreatedNotificationHandler : INotificationHandler<FoodNotification>
     {
         private readonly ILogger<FoodCreatedNotificationHandler> _logger;
 
@@ -15,9 +15,9 @@ namespace Shop.Handlers
             _logger = logger;
         }
 
-        public async Task Handle(FoodCreatedNotification notification, CancellationToken cancellationToken)
+        public async Task Handle(FoodNotification notification, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Food with ID {notification.FoodId} has been created.");
+            _logger.LogInformation($"Method {notification.Message} Has Been Called");
         }
     }
 }
