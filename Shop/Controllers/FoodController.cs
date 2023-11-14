@@ -51,7 +51,7 @@ namespace Shop.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(Guid id, Food food)
+        public async Task<IActionResult> UpdateFood(Guid id, Food food)
         {
             if (id != food.FoodID)
             {
@@ -80,7 +80,7 @@ namespace Shop.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(Guid id)
+        public async Task<IActionResult> DeleteFood(Guid id)
         {
             var food = await _dBContext.Foods.FindAsync(id);
             if (food == null)
