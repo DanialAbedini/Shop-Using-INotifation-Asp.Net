@@ -13,7 +13,7 @@ namespace Shop.Repository.Base
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-9GMOCTB;Database=Shop;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-4C2FH7N;Database=Shop;Trusted_Connection=True;TrustServerCertificate=True");
         }
     }
 }

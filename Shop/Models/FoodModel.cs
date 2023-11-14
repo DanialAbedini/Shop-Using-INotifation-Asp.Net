@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Shop.Models.Domain;
 
-namespace Shop.Models.Domain
+namespace Shop.Models
 {
-    public class Food
+    public class FoodModel
     {
-        [Key]
-        public Guid FoodID { get; set; }
-
         [Required]
         public string FoodName { get; set; }
 
